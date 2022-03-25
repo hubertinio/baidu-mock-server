@@ -1,0 +1,29 @@
+POST {{ host }}/urls?site={{ site }}
+Content-Type: text/plain
+
+http://www.example.com/1.html
+http://www.example.com/2.html
+
+###
+
+PUT {{ host }}/mockserver/expectation
+Content-Type: application/json
+
+{
+  "httpRequest": {
+    "method": "POST",
+    "path": "/urls"
+  },
+  "httpResponse": {
+    "statusCode": 401,
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "body": {
+      "error": 401,
+      "message": "token is not valid"
+    }
+  }
+}

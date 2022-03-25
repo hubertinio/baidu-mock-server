@@ -1,0 +1,87 @@
+POST {{ host }}/urls?site={{ site }}&token={{ token }}
+Content-Type: text/plain
+
+http://www.example.com/1.html
+http://www.example.com/2.html
+
+###
+
+
+PUT {{ host }}/mockserver/clear
+Content-Type: application/json
+
+{
+  "path": "/urls"
+}
+
+###
+
+PUT {{ host }}/mockserver/expectation
+Content-Type: application/json
+
+{
+  "httpRequest": {
+    "method": "POST",
+    "path": "/urls"
+  },
+  "httpResponse": {
+    "statusCode": 400,
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "body": {
+      "error": 400,
+      "message": "token invalid"
+    }
+  }
+}
+
+###
+
+PUT {{ host }}/mockserver/expectation
+Content-Type: application/json
+
+{
+  "httpRequest": {
+    "method": "POST",
+    "path": "/urls",
+    "queryStringParameters": {
+      "site": [
+        {
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "token": [
+        {
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "httpResponse": {
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "body": {
+      "remain": 4999900,
+      "success": 100,
+      "not_same_site":[
+        "http://www.diff.com/1.html",
+        "http://www.diff.com/2.html"
+      ],
+      "not_valid":[
+        "//www.invalid.com/1.html",
+        "//www.invalid.com/2.html"
+      ]
+    }
+  }
+}
+

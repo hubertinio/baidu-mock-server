@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  edium:
+    image: mockserver/mockserver
+    container_name: baidu-mock
+    command: -serverPort 1080 -logLevel INFO
+    ports:
+      - ${MOCK_PORT}:1080
+    environment:
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/initializerJson.json
+      MOCKSERVER_MAX_EXPECTATIONS: 100
+      MOCKSERVER_MAX_HEADER_SIZE: 8192
+#      MOCKSERVER_PERSIST_EXPECTATIONS: 'true'
+#      MOCKSERVER_PERSISTED_EXPECTATIONS_PATH: /config/persistedExpectations.json
+      MOCKSERVER_PROPERTY_FILE: /config/mockserver.properties
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: 'true'
+    volumes:
+      - type: bind
+        source: ./config
+        target: /config
+
+networks:
+  default:
+    driver: bridge

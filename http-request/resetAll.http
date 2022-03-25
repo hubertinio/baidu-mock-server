@@ -1,0 +1,4 @@
+PUT  {{ host }}/mockserver/reset
+Content-Type: application/json
+
+###

@@ -1,0 +1,43 @@
+[
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/urls",
+      "queryStringParameters": {
+        "site": [
+          {
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "token": [
+          {
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "httpResponse": {
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "body": {
+        "remain": 4999900,
+        "success": 100,
+        "not_same_site":[
+          "http://www.diff.com/1.html",
+          "http://www.diff.com/2.html"
+        ],
+        "not_valid":[
+          "//www.invalid.com/1.html",
+          "//www.invalid.com/2.html"
+        ]
+      }
+    }
+  }
+]
