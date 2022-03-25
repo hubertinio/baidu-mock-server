@@ -33,12 +33,6 @@ Add to `/etc/hosts`
 127.0.0.1 data.baidu.loc
 ```
 
-Set The Mock as Baidu API 
-
-```bash
-BAIDU_API_HOST=http://data.baidu.loc:18080/
-```
-
 ### Related project on docker
 
 You can access host services using the IP address of the docker0 interface
@@ -50,7 +44,7 @@ docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN g
     inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
 ```
 
-Set The Mock As
+Set The Mock As Env Var
 
 ```bash
 BAIDU_API_HOST=http://172.17.0.1:18080/
