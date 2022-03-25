@@ -1,4 +1,4 @@
-# Baidu Mock Server (in example for tme.hk)
+# Baidu Mock Server
 
 https://www.mock-server.com/#what-is-mockserver
 
@@ -83,4 +83,3 @@ https://tjtelan.com/blog/how-to-link-multiple-docker-compose-via-network/
 ## Appendix
 
 [Testing RESTful Web Services with PHP Storm](https://www.jetbrains.com/help/phpstorm/http-client-in-product-code-editor.html)
-# baidu-mock-server
